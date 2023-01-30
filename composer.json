@@ -1,0 +1,21 @@
+{
+    "name": "haoquach/naturalcms",
+    "require": {
+        "administrator/init_php":"dev-main"
+    },
+    "autoload": {
+        "files": [
+            "init.php"
+        ]
+    },
+    "config": {
+        "process-timeout":0
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/__init__PHP.git"}
+    ],
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8080",
+        "test": "phpunit"
+    }
+}
