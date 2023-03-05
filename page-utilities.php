@@ -27,6 +27,7 @@
                 </div>
             </form>
         </div>
+        <?php if($control->readonly == false){ ?>
         <div class="col-auto">						    
             <a class="btn app-btn-secondary" href="?method=all">
                 Nhập liệu
@@ -42,5 +43,6 @@
                 Xóa
             </a>
         </div>
+        <?php }?>
     </div>
 </div>

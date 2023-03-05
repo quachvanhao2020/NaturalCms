@@ -27,7 +27,7 @@
                             </a>
                         </div>
                         <div class="app-utility-item app-user-dropdown dropdown">
-                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="<?= $user['logo'] ?>" alt="user profile"></a>
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="<?= $user['logo'] ?>"></a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                                 <li><a class="dropdown-item" href="account.php">Tài khoản</a></li>
                                 <li><a class="dropdown-item" href="settings.php">Cấu hình</a></li>

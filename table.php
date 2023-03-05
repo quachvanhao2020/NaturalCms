@@ -6,7 +6,7 @@
         <tr>
             <th class="cell"><input type="checkbox" onclick="checkall(event)" ></th>
             <th class="cell">ID</th>
-            <?php foreach ($meta as $key => $value) { ?>
+            <?php foreach ($meta as $key => $value) { if(@$display[$key] === false) continue; ?>
             <th class="cell"><?= __($key) ?></th>
             <?php }?>
             <th class="cell">Ngày tạo</th>
@@ -18,9 +18,9 @@
         <tr>
             <td class="cell"><input type="checkbox" value="<?= $value["id"] ?>"></td>
             <td class="cell">#<?= $value["id"] ?></td>
-            <?php foreach ($meta as $k => $v) { ?>
+            <?php foreach ($meta as $k => $v) { if(@$display[$k] === false) continue; ?>
             <?php if($v['type'] == "factory") { ?>
-            <td class="cell"><a href="<?= @$metas[$v['value']->id]['router'] ?>?id=<?= $value[$k] ?>"><?= @$v['value'][$value[$k]][$display[$k]] ?></a></td>
+            <td class="cell"><a href="<?= @$metas[id($v['value'])]['router'] ?>?id=<?= $value[$k] ?>"><?= @$v['value'][$value[$k]][$display[$k]] ?></a></td>
             <?php } else {?>
             <td class="cell"><?= @$value[$k] ?></td>
             <?php }?>

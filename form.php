@@ -1,3 +1,27 @@
+<?php
+    function cmsformvalue(string $key){
+        global $mode;
+        global $data;
+        global $default;
+        $a = "";
+        if(isset($default[$key])){
+            $a = $default[$key];
+        }
+        return $mode == "get" || $mode == "all" ? @$data[$key] : $a;
+    }
+    function cmsformdisplay(string $key){
+        global $require;
+        global $control;
+        $data = "";
+        if(isset($require[$key])){
+            $data .= "required ";
+        }
+        if($control->readonly){
+            $data .= "readonly ";
+        }
+        return $data;
+    }
+?>
 <form method="POST">
     <?php if($mode == "get" && !isset($undeleted)){ ?>
     <div class="mb-3">
@@ -6,13 +30,13 @@
     </div>
     <?php }?>
     <?php foreach ($meta as $key => $value) { $type = $value['type']; ?>
-    <div class="mb-3">
+    <div class="mb-3" <?= isset($display[$key]) && $display[$key] == false ? 'style="display:none;"' : "" ?> >
         <label class="form-label"><?= __($key) ?></label>
         <?php if($type == "string"){ ?>
-        <input name="<?= $key ?>" type="text" class="form-control" value="<?= ($mode == "get" || $mode == "all") ? @$data[$key] : "" ?>" <?= isset($require[$key]) ? "required" : "" ?>>
+        <input name="<?= $key ?>" type="text" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php } ?> 
         <?php if ($type == "integer"){?>
-        <input name="<?= $key ?>" min=0 type="number" class="form-control" value="<?= $mode == "get" || $mode == "all" ? @$data[$key] : "" ?>" <?= isset($require[$key]) ? "required" : "" ?>>
+        <input name="<?= $key ?>" min=0 type="number" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php } ?> 
         <?php if ($type == "array"){?>
         <select name="<?= $key ?>" class="form-control">
@@ -22,17 +46,18 @@
         </select>
         <?php } ?> 
         <?php if ($type == "factory"){?>
-        <input name="<?= $key ?>" type="text" class="form-control" value="<?= $mode == "get" || $mode == "all" ? @$data[$key] : "" ?>" <?= isset($require[$key]) ? "required" : "" ?>>
+        <input name="<?= $key ?>" type="text" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php }?>
         <?php if ($type == "color"){?>
-        <input name="<?= $key ?>" type="color" class="form-control" value="<?= $mode == "get" || $mode == "all" ? @$data[$key] : "" ?>" <?= isset($require[$key]) ? "required" : "" ?>>
+        <input name="<?= $key ?>" type="color" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php }?>
         <?php if ($type == "bool"){?>
         <input name="<?= $key ?>" type="hidden" value="0">
-        <input name="<?= $key ?>" type="checkbox" <?= @$data[$key] == true ? "checked" : "" ?> <?= isset($require[$key]) ? "required" : "" ?>>
+        <input name="<?= $key ?>" type="checkbox" <?= @$data[$key] == true ? "checked" : "" ?> <?= cmsformdisplay($key); ?>>
         <?php }?>
     </div>
     <?php }?>
+    <?php if($control->readonly == false){ ?>
     <?php if($mode == "all"){?>
     <div class="mb-3">
         <label class="form-label">Thứ tự</label>
@@ -54,5 +79,6 @@
     <?php };?>
     <?php if($mode == "all"){?>
     <button type="submit" class="btn app-btn-primary">Nhập liệu</button>
+    <?php };?>
     <?php };?>
 </form>
