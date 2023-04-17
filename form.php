@@ -29,7 +29,7 @@
         <input type="text" class="form-control" value="<?= $data["id"] ?>" disabled>
     </div>
     <?php }?>
-    <?php foreach ($meta as $key => $value) { $type = $value['type']; ?>
+    <?php foreach ($meta as $key => $value) { $type = $value['type']; $option = @$options[$key]; ?>
     <div class="mb-3" <?= isset($display[$key]) && $display[$key] == false ? 'style="display:none;"' : "" ?> >
         <label class="form-label"><?= __($key) ?></label>
         <?php if($type == "string"){ ?>
@@ -46,7 +46,18 @@
         </select>
         <?php } ?> 
         <?php if ($type == "factory"){?>
+        <?php if (!empty($display[$key])){ $vv = $value['value']?>
+        <select name="<?= $key ?>" class="form-control">
+            <?php if($option){ if(isset($option['empty']) && $option['empty']){ ?>
+            <option value="" <?= @$data[$key] == "" ? "selected" : "" ?>><?= __("empty") ?></option>
+            <?php }} ?>
+            <?php foreach ($vv as $k => $v) { if(!is_array($v)) continue; ?>
+            <option value="<?= $v['id'] ?>" <?= @$data[$key] == $v['id'] ? "selected" : "" ?>><?= __($v[$display[$key]]) ?></option>
+            <?php }?>
+        </select>
+        <?php }else{?>
         <input name="<?= $key ?>" type="text" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
+        <?php } ?> 
         <?php }?>
         <?php if ($type == "color"){?>
         <input name="<?= $key ?>" type="color" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
