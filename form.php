@@ -36,7 +36,10 @@
         <input name="<?= $key ?>" type="text" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php } ?> 
         <?php if ($type == "integer"){?>
-        <input name="<?= $key ?>" min=0 type="number" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
+        <input name="<?= $key ?>" <?= isset($value['min']) ? "min=".$value['min'] : "" ?> <?= isset($value['max']) ? "max=".$value['max'] : "" ?> type="number" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
+        <?php } ?> 
+        <?php if ($type == "float"){?>
+        <input name="<?= $key ?>" <?= isset($value['min']) ? "min=".$value['min'] : "" ?> <?= isset($value['max']) ? "max=".$value['max'] : "" ?> step="<?= @$value['step'] ?>" type="number" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
         <?php } ?> 
         <?php if ($type == "array"){?>
         <select name="<?= $key ?>" class="form-control">

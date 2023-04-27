@@ -31,7 +31,10 @@
             <?php if(@$value["created"] instanceof DateTime){ ?>
             <td class="cell"><?= $value["created"]->format('Y-m-d H:i:s') ?></td>
             <?php }?>
-            <td class="cell"><a class="btn-sm app-btn-secondary" href="?id=<?= $value["id"] ?>">Chi tiết</a></td>
+            <td class="cell"><a class="btn-sm app-btn-secondary" href="?id=<?= $value["id"] ?>">...</a></td>
+            <?php if(isset($tree)){ ?>
+            <td class="cell"><a class="btn-sm app-btn-secondary" href="?parent=<?= $value["id"] ?>">>>></a></td>
+            <?php }?>
         </tr>
         <?php }; ?>
     </tbody>
