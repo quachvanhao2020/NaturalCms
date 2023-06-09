@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/__init__PHP.git",
-                "reference": "c7f8ee3e3ae81c5cf651d23091d36d35081ad715"
+                "reference": "4370b72f5b95d27ad361540f378ecf47621f315d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/__init__PHP/zipball/c7f8ee3e3ae81c5cf651d23091d36d35081ad715",
-                "reference": "c7f8ee3e3ae81c5cf651d23091d36d35081ad715",
+                "url": "https://api.github.com/repos/quachvanhao2020/__init__PHP/zipball/4370b72f5b95d27ad361540f378ecf47621f315d",
+                "reference": "4370b72f5b95d27ad361540f378ecf47621f315d",
                 "shasum": ""
             },
             "require": {
@@ -34,7 +34,7 @@
                 "source": "https://github.com/quachvanhao2020/__init__PHP/tree/main",
                 "issues": "https://github.com/quachvanhao2020/__init__PHP/issues"
             },
-            "time": "2023-01-12T04:52:00+00:00"
+            "time": "2023-06-09T04:05:36+00:00"
         },
         {
             "name": "psr/container",

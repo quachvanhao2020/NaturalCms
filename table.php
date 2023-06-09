@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php unset($meta['status']); foreach ($data as $key => $value) { if(!is_array($value)) continue; ?>
+        <?php unset($meta['status']); foreach ($data as $key => $value) { if(!is_arrays($value)) continue; ?>
         <tr>
             <td class="cell"><input type="checkbox" value="<?= $value["id"] ?>"></td>
             <td class="cell">#<?= $value["id"] ?></td>

@@ -54,7 +54,7 @@
             <?php if($option){ if(isset($option['empty']) && $option['empty']){ ?>
             <option value="" <?= @$data[$key] == "" ? "selected" : "" ?>><?= __("empty") ?></option>
             <?php }} ?>
-            <?php foreach ($vv as $k => $v) { if(!is_array($v)) continue; ?>
+            <?php foreach ($vv as $k => $v) { if(!is_arrays($v)) continue; ?>
             <option value="<?= $v['id'] ?>" <?= @$data[$key] == $v['id'] ? "selected" : "" ?>><?= __($v[$display[$key]]) ?></option>
             <?php }?>
         </select>
