@@ -23,24 +23,24 @@
                     <input type="text" name="value" class="form-control search-orders" placeholder="Nội dung">
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn app-btn-secondary">Tìm kiếm</button>
+                    <button type="submit" class="btn app-btn-secondary"><?= __("search") ?></button>
                 </div>
             </form>
         </div>
         <?php if($control->readonly == false){ ?>
         <div class="col-auto">						    
             <a class="btn app-btn-secondary" href="?method=all">
-                Nhập liệu
+                <?= __("nhaplieu") ?>
             </a>
         </div>
         <div class="col-auto">						    
             <a class="btn app-btn-secondary" href="?method=new">
-                Tạo mới
+                <?= __("create") ?>
             </a>
         </div>
         <div class="col-auto">						    
             <a class="btn app-btn-secondary" onclick="deletetable(event)">
-                Xóa
+                <?= __("delete") ?>
             </a>
         </div>
         <?php }?>

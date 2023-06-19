@@ -3,7 +3,7 @@
     <ul class="pagination justify-content-center">
         <?php if($index > 0){?>
         <li class="page-item">
-            <a class="page-link" href="?index=<?= $index - 1 ?>">Sau</a>
+            <a class="page-link" href="?index=<?= $index - 1 ?>"><?= __("sau") ?></a>
         </li>
         <?php }?>
         <?php for ($i = 0 ; $i < $index; $i++) { ?>
@@ -17,7 +17,7 @@
         <?php } ?>
         <?php if($index < $pagination->max - 1){?>
         <li class="page-item">
-            <a class="page-link" href="?index=<?= $index + 1 ?>">Trước</a>
+            <a class="page-link" href="?index=<?= $index + 1 ?>"><?= __("truoc") ?></a>
         </li>
         <?php }?>
     </ul>

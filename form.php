@@ -69,6 +69,12 @@
         <input name="<?= $key ?>" type="hidden" value="0">
         <input name="<?= $key ?>" type="checkbox" <?= @$data[$key] == true ? "checked" : "" ?> <?= cmsformdisplay($key); ?>>
         <?php }?>
+        <?php if($type == "json"){ ?>
+        <div style="position: relative;">
+            <input name="<?= $key ?>" type="text" class="form-control" value="<?= cmsformvalue($key); ?>" <?= cmsformdisplay($key); ?>>
+            <a href="json.php?<?= isset($data[$key]) ? "file=".$data[$key]."&" : "" ?>default=<?= @$default[$key] ?>"><div style="position: absolute;top: 0;right: 4px;padding: 4px;font-size: larger;">:::</div></a>
+        </div>
+        <?php } ?> 
     </div>
     <?php }?>
     <?php if($control->readonly == false){ ?>

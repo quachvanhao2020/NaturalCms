@@ -9,7 +9,7 @@
             <?php foreach ($meta as $key => $value) { if(@$display[$key] === false) continue; ?>
             <th class="cell"><?= __($key) ?></th>
             <?php }?>
-            <th class="cell">Ngày tạo</th>
+            <th class="cell"><?= __("created") ?></th>
             <th class="cell"></th>
         </tr>
     </thead>
