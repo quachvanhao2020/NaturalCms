@@ -22,7 +22,11 @@
             <?php if($v['type'] == "factory") { ?>
             <td class="cell"><a href="<?= @$metas[id($v['value'])]['router'] ?>?id=<?= $value[$k] ?>"><?= @$v['value'][$value[$k]][$display[$k]] ?></a></td>
             <?php } else {?>
+            <?php if(@$v['ex'] == "href"){ ?>
+            <td class="cell"><a href="<?= @$value[$k] ?>"><?= @$value[$k] ?></a></td>
+            <?php } else {?>
             <td class="cell"><?= @$value[$k] ?></td>
+            <?php }?>
             <?php }?>
             <?php }?>
             <?php if(isset($status_meta)){ ?>
@@ -41,6 +45,7 @@
 </table>
 <script>
     var table = document.getElementById("table");
+    var confirmdelete = <?= @$confirmdelete == true ? 1 : 0 ?>;
     function checkall(e){
         var rs = table.children[1].children;
         for (e of rs) {
@@ -49,6 +54,9 @@
         }
     }
     function deletetable(e){
+        if(confirmdelete){
+            if(!confirm("IsOk!")) return;
+        }
         var rs = table.children[1].children;
         var pr = "";
         for (e of rs) {

@@ -1,5 +1,5 @@
 <div class="page-utilities">
-    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+    <div class="row g-2">
         <div class="col-auto">
             <form class="table-search-form row gx-1 align-items-center">
                 <?php if(is_array(@$data2)) { foreach ($data2 as $key => $value){ ?>
@@ -28,20 +28,22 @@
             </form>
         </div>
         <?php if($control->readonly == false){ ?>
-        <div class="col-auto">						    
-            <a class="btn app-btn-secondary" href="?method=all">
-                <?= __("nhaplieu") ?>
-            </a>
-        </div>
-        <div class="col-auto">						    
-            <a class="btn app-btn-secondary" href="?method=new">
-                <?= __("create") ?>
-            </a>
-        </div>
-        <div class="col-auto">						    
-            <a class="btn app-btn-secondary" onclick="deletetable(event)">
-                <?= __("delete") ?>
-            </a>
+        <div class="col-auto" style="display: flex;">
+            <div>						    
+                <a class="btn app-btn-secondary" href="?method=all">
+                    <?= __("nhaplieu") ?>
+                </a>
+            </div>
+            <div>						    
+                <a class="btn bg-success" href="?method=new">
+                    <?= __("create") ?>
+                </a>
+            </div>
+            <div>						    
+                <a class="btn bg-danger" onclick="deletetable(event)">
+                    <?= __("delete") ?>
+                </a>
+            </div>
         </div>
         <?php }?>
     </div>
