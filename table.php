@@ -1,7 +1,7 @@
 <?php
     $status = @$meta['status'];
 ?>
-<table id="table" class="table app-table-hover mb-0 text-left">
+<table id="table" class="table">
     <thead>
         <tr>
             <th class="cell"><input type="checkbox" onclick="checkall(event)" ></th>
@@ -23,8 +23,10 @@
             <td class="cell"><a href="<?= @$metas[id($v['value'])]['router'] ?>?id=<?= $value[$k] ?>"><?= @$v['value'][$value[$k]][$display[$k]] ?></a></td>
             <?php } else {?>
             <?php if(@$v['ex'] == "href"){ ?>
-            <td class="cell"><a href="<?= @$value[$k] ?>"><?= @$value[$k] ?></a></td>
-            <?php } else {?>
+            <td class="cell"><a target="_blank" href="<?= @$value[$k] ?>"><?= @$value[$k] ?></a></td>
+            <?php } else if(@$v['ex'] == "img") {?>
+            <td class="cell"><img class="pop" style="height: 50px;" src="<?= @$value[$k] ?>"></td>
+            <?php }else{?>
             <td class="cell"><?= @$value[$k] ?></td>
             <?php }?>
             <?php }?>
