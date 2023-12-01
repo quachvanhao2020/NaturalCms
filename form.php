@@ -80,25 +80,25 @@
     <?php if($control->readonly == false){ ?>
     <?php if($mode == "all"){?>
     <div class="mb-3">
-        <label class="form-label">Thứ tự</label>
+        <label class="form-label"><?= __("thutu") ?></label>
         <input name="index" type="text" class="form-control" value="<?= @$data["index"] ?>">
     </div>
     <div class="mb-3">
-        <label class="form-label">Dữ liệu</label>
+        <label class="form-label"><?= __("dulieu") ?></label>
         <textarea style="height: 200px;" name="data" rows="10" class="form-control"><?= @$data["data"] ?></textarea>
     </div>
     <?php };?>
     <?php if($mode == "get"){?>
-    <button type="submit" class="btn app-btn-primary">Lưu</button>
+    <button type="submit" class="btn app-btn-primary"><?= __("luu") ?></button>
     <?php if(!isset($undeleted)){?>
-    <a onclick="deleteform(event)" class="btn app-btn-danger">Xóa</a>
+    <a onclick="deleteform(event)" class="btn app-btn-danger"><?= __("xoa") ?></a>
     <?php };?>
     <?php };?>
     <?php if($mode == "new"){?>
-    <button type="submit" class="btn app-btn-primary">Tạo mới</button>
+    <button type="submit" class="btn app-btn-primary"><?= __("taomoi") ?></button>
     <?php };?>
     <?php if($mode == "all"){?>
-    <button type="submit" class="btn app-btn-primary">Nhập liệu</button>
+    <button type="submit" class="btn app-btn-primary"><?= __("nhaplieu") ?></button>
     <?php };?>
     <?php };?>
 </form>

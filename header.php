@@ -16,13 +16,13 @@
                     </div>
                     <div class="app-search-box col">
                         <form class="app-search-form">
-                            <input type="text" placeholder="Tìm kiếm..." name="search" class="form-control search-input">
-                            <button type="submit" class="btn search-btn btn-primary" value="Tìm kiếm"><i class="fas fa-search"></i></button>
+                            <input type="text" placeholder="<?= __("search") ?>..." name="search" class="form-control search-input">
+                            <button type="submit" class="btn search-btn btn-primary" value="search"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                     <div class="app-utilities col-auto">
                         <div class="app-utility-item">
-                            <a href="settings.php" title="Cấu hình">
+                            <a href="settings.php">
                                 <i class="fa-solid fa-gear"></i>
                             </a>
                         </div>
