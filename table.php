@@ -48,21 +48,80 @@
 <script>
     var table = document.getElementById("table");
     var confirmdelete = <?= @$confirmdelete == true ? 1 : 0 ?>;
-    function checkall(e){
-        var rs = table.children[1].children;
-        for (e of rs) {
-            var a = e.children[0].children[0];
-            a.checked = !a.checked;
+    var trs = table.children[1].children;
+    var shiftHeld = false;
+    var cutr = null;
+    function handleShift(e) { shiftHeld = e.shiftKey }
+    document.addEventListener("keydown", (e)=>{
+        if(e.keyCode == 46){
+            deletetable(e);
+            return;
+        }
+        handleShift(e);
+    }, true);
+    document.addEventListener("keyup", handleShift, true);
+    for (e of trs) {
+        e.checkbox = e.children[0].children[0];
+        e.tid = e.children[1];
+        e.active = function(e){
+            var a = this.checkbox;
+            if(e){
+                a.checked = true;
+                this.className = "active_row";
+            }else{
+                a.checked = false;
+                this.className = "";
+            }
+        }
+        e.checkbox.addEventListener('change',(event) => {
+            shiftHeldAuto(event);
+        });
+        e.tid.addEventListener('click',(event) => {
+            var target = event.target;
+            var tr = target.parentNode;
+            tr.active(true);
+        });
+    }
+    function shiftHeldAuto(){
+        var target = event.target;
+        var tr = target.parentNode.parentNode;
+        tr.active(target.checked);
+        if(target.checked){
+            if(cutr == null){
+                cutr = tr;
+            }else{
+                if(shiftHeld){
+                    var is = false;
+                    for(e of trs){
+                        if(is){
+                            e.active(true);
+                        }
+                        if((e == cutr || e == tr) && is == false){
+                            is = true;
+                            continue;
+                        }
+                        if((e == cutr || e == tr) && is == true){
+                            is = false;
+                            break;
+                        }
+                    }
+                    cutr = null;
+                }
+            }
         }
     }
-    function deletetable(e){
+    function checkall(event){
+        for (e of trs) {
+            e.active(event.target.checked);
+        }
+    }
+    function deletetable(event){
         if(confirmdelete){
             if(!confirm("IsOk!")) return;
         }
-        var rs = table.children[1].children;
         var pr = "";
-        for (e of rs) {
-            var a = e.children[0].children[0];
+        for (e of trs) {
+            var a = e.checkbox;
             if(a.checked){
                 pr += a.value + ",";
             }

@@ -2,7 +2,7 @@
     <title><?= CSM_TITLE ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="description" content="<?= CSM_TITLE ?>">
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.ico">
@@ -12,6 +12,15 @@
     <style>
         .container-xl{
             max-width: unset !important;
+        }
+        .table tr:hover {
+            background: whitesmoke;
+        }
+        .active_row {
+            background: whitesmoke;
+        }
+        input[type='checkbox'] {
+            cursor: pointer;
         }
     </style>
 </head>
